@@ -52,6 +52,14 @@ class HelpdeskTicket(models.Model):
         ('2', 'Causa 2'),
         ('3', 'Causa 3')])
     decision = fields.Text('Decision Adopted')
+    # action_ids = fields.One2many(
+    #     comodel_name='helpdesk.action',
+    #     inverse_name='action_id',
+    #     string='Actions')
+    action_ids = fields.Many2many(
+        "helpdesk.action",
+        String="Action"
+    )
 
     def assign_to_me(self):
         self.write({'user_id': self.env.uid})
