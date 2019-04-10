@@ -54,6 +54,16 @@
             </field>
         </record>
 
+        <record id="view_helpdesk_ticket_pivot" model="ir.ui.view">
+            <field name="name">helpdesk.ticket.view.pivot</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="arch" type="xml">
+                <pivot string="Tickets">
+                    <field name="cause" type="col"/>
+                </pivot>
+            </field>
+        </record>
+
         <record id="view_helpdesk_ticket_kanban" model="ir.ui.view">
             <field name="name">helpdesk.ticket.kanban</field>
             <field name="model">helpdesk.ticket</field>
@@ -135,7 +145,7 @@
             <field name="name">Tickets</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">helpdesk.ticket</field>
-            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_mode">kanban,tree,form,pivot</field>
             <field name="view_type">form</field>
         </record>
 
