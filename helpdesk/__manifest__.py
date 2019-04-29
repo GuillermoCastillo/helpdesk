@@ -21,6 +21,7 @@
         "views/helpdesk_stage_views.xml",
         "views/helpdesk_action_views.xml",
         "views/res_users_views.xml",
+        "views/templates.xml",
     ],
     "application": True,
     "installable": True,
