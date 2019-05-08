@@ -25,5 +25,8 @@
     ],
     "application": True,
     "installable": True,
-    "depends": ["base", "mail"],
+    "depends": [
+        "base",
+        "mail",
+        "portal"],
 }
