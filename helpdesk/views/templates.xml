@@ -16,4 +16,43 @@
     <p t-esc="partner_email_done"/>
   </template>
 
+  <!-- PORTAL -->
+
+  <template id="portal_my_tickets" name="My Tickets">
+      <t t-call="portal.portal_layout">
+          <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+          <t t-call="portal.portal_searchbar">
+              <t t-set="title">Tickets</t>
+          </t>
+          <t t-if="not tickets">
+              <div class="alert alert-warning mt8" role="alert">
+                  There are no tickets. You can create new one on this <a t-attf-href="/new_helpdesk_ticket"> form </a>.
+              </div>
+          </t>
+          <t t-if="tickets" t-call="portal.portal_table">
+              <tbody>
+                  <tr t-foreach="tickets" t-as="ticket">
+                      <td>
+                        <span t-field="ticket.name"/>
+                          <!--a t-attf-href="/my/ticket/#{ticket.id}?{{ keep_query() }}">
+                          </a-->
+                      </td>
+                  </tr>
+              </tbody>
+          </t>
+      </t>
+  </template>
+
+
+      <template id="portal_my_home" name="Portal My Home: ticket entries" inherit_id="portal.portal_my_home" priority="40">
+          <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+              <t t-if="tickets_count" t-call="portal.portal_docs_entry">
+                  <t t-set="title">Tickets</t>
+                  <t t-set="url" t-value="'/my/tickets'"/>
+                  <t t-set="count" t-value="tickets_count"/>
+              </t>
+          </xpath>
+      </template>
+
 </odoo>
